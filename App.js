@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './screens/HomeScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
+import { Ionicons } from '@expo/vector-icons';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [favorites, setFavorites] = useState([]);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen 
+                    name="Home" 
+                    children={() => <HomeScreen favorites={favorites} setFavorites={setFavorites} />} 
+                    options={{
+                        tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
+                    }} 
+                />
+                <Tab.Screen 
+                    name="Favorites" 
+                    children={() => <FavoritesScreen favorites={favorites} />} 
+                    options={{
+                        tabBarIcon: ({ color }) => <Ionicons name="heart" size={24} color={color} />,
+                    }} 
+                />
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
+}
