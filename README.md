@@ -26,8 +26,5 @@ Os arquivos do projeto estão organizados nas seguintes pastas:
 - **main**: Branch onde ficar a licença do projeto.
 - **master**: Branch que contém a versão estável do projeto onde foram realizados os testes e experimentos.
 
-## Licença
-Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ## Agradecimentos
 Obrigada por visitar este repositório!
